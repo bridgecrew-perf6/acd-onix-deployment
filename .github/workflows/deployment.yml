@@ -24,15 +24,15 @@ jobs:
         GCR_IMAGE=$ENV_GCR_IMAGE
         VERSION=latest
         GIT_HASH=$(git rev-parse --short "$GITHUB_SHA")
-        SERVICE_NAME=grafana-loki-syslog
-
-        source "custom.cfg"
+        SERVICE_NAME=grafana-loki-syslog        
 
         BRANCH=""
-        VERSION=${IMAGE_TAG} ### from custom.cfg ###
         if [[ $GITHUB_REF == refs/heads/* ]]; then
           BRANCH=$(echo ${GITHUB_REF#refs/heads/} | sed -r 's#/+#-#g')
         fi
+
+        source "custom-${BRANCH}.cfg"
+        VERSION=${IMAGE_TAG} ### from custom.cfg ###
 
         echo ::set-output name=version::${VERSION}
         echo ::set-output name=branch::${BRANCH}
