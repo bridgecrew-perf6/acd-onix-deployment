@@ -4,10 +4,11 @@
 
 REMOTE_DIR=/home/devops
 HOST=onix-api.acd-np.its-software-services.com
+SPEC=devops@${HOST}:${REMOTE_DIR}
 KEY_FILE=gce-dev.key
-OPTION=-o StrictHostKeyChecking=no
+OPTION=StrictHostKeyChecking=no
 
 # DO NOT cat any private key here
-scp -i ${KEY_FILE} ${OPTION} app-start.bash ${HOST}:${REMOTE_DIR}
-scp -i ${KEY_FILE} ${OPTION} custom.cfg ${HOST}:${REMOTE_DIR}
-scp -i ${KEY_FILE} ${OPTION} docker-compose ${HOST}:${REMOTE_DIR}
+scp -i ${KEY_FILE} -o ${OPTION} app-start.bash ${SPEC}
+scp -i ${KEY_FILE} -o ${OPTION} custom.cfg ${SPEC}
+scp -i ${KEY_FILE} -o ${OPTION} docker-compose.yaml ${SPEC}
