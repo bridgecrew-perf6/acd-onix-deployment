@@ -12,9 +12,12 @@ if [ "${BRANCH}" == "production" ]; then
     KEY_FILE=gce-prod.key
     HOST=onix-api.acd.its-software-services.com
 fi
-SPEC=devops@${HOST}:${REMOTE_DIR}
+PATH_SPEC=devops@${HOST}:${REMOTE_DIR}
+USER_SPEC=devops@${HOST}
+
+ssh -i ${KEY_FILE} -o ${OPTION} ${USER_SPEC} mkdir -p ${REMOTE_DIR}
 
 # DO NOT cat any private key here
-scp -i ${KEY_FILE} -o ${OPTION} app-start.bash ${SPEC}
-scp -i ${KEY_FILE} -o ${OPTION} custom.cfg ${SPEC}
-scp -i ${KEY_FILE} -o ${OPTION} docker-compose.yaml ${SPEC}
+scp -i ${KEY_FILE} -o ${OPTION} app-start.bash ${PATH_SPEC}
+scp -i ${KEY_FILE} -o ${OPTION} custom.cfg ${PATH_SPEC}
+scp -i ${KEY_FILE} -o ${OPTION} docker-compose.yaml ${PATH_SPEC}
