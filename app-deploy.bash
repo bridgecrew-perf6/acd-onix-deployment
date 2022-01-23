@@ -19,7 +19,7 @@ ssh -i ${KEY_FILE} -o ${OPTION} ${USER_SPEC} mkdir -p ${REMOTE_DIR}
 
 # DO NOT cat any private key here
 scp -i ${KEY_FILE} -o ${OPTION} app-start.bash ${PATH_SPEC}
-scp -i ${KEY_FILE} -o ${OPTION} custom.cfg ${PATH_SPEC}
+scp -i ${KEY_FILE} -o ${OPTION} custom-${BRANCH}.cfg ${PATH_SPEC}/custom.cfg
 scp -i ${KEY_FILE} -o ${OPTION} docker-compose.yaml ${PATH_SPEC}
 
 ssh -i ${KEY_FILE} -o ${OPTION} ${USER_SPEC} "cd ${REMOTE_DIR}; ./app-start.bash"
