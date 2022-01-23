@@ -3,7 +3,7 @@
 # $1 is branch name
 
 BRANCH=$1
-REMOTE_DIR=/home/devops
+REMOTE_DIR=/home/devops/onix
 OPTION=StrictHostKeyChecking=no
 
 KEY_FILE=gce-dev.key
