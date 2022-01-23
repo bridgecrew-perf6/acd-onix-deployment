@@ -13,4 +13,4 @@ cat custom.cfg > ${ENV_FILE}
 cat secrets.cfg >> ${ENV_FILE}
 echo "DATA_DIR=${HOME}/data" >> ${ENV_FILE} 
 
-docker-compose up -d
+sudo docker-compose up -d
