@@ -1,0 +1,30 @@
+name: Onix API deployment
+
+on:
+  push:
+    branches: [ development, production ]
+
+env:
+  GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+jobs:
+  deploy-to-gce:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout repo
+      uses: actions/checkout@v2
+
+    - name: Line notification start
+      uses: snow-actions/line-notify@v1.0.0
+      with:
+        access_token: ${{ secrets.LINE_ACCESS_TOKEN }}
+        message: "Start deploy [acd-onix-api] to env [xxxx]..."
+
+    - name: show job status
+      if: always()
+      uses: snow-actions/line-notify@v1.0.0
+      with:
+        access_token: ${{ secrets.LINE_ACCESS_TOKEN }}
+        message: "Done deploy [acd-onix-api] to env [xxxx] with status [${{job.status}}]"
