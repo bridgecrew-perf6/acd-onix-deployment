@@ -26,8 +26,10 @@ jobs:
         GIT_HASH=$(git rev-parse --short "$GITHUB_SHA")
         SERVICE_NAME=grafana-loki-syslog
 
+        source "custom.cfg"
+
         BRANCH=""
-        VERSION="get-from-custom.cfg"
+        VERSION=${IMAGE_TAG} ### from custom.cfg ###
         if [[ $GITHUB_REF == refs/heads/* ]]; then
           BRANCH=$(echo ${GITHUB_REF#refs/heads/} | sed -r 's#/+#-#g')
         fi
