@@ -1,0 +1,2 @@
+1. Backup & restore PostgreSQL
+2. Copy images and put under "storage" directory
