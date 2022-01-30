@@ -19,7 +19,10 @@ services:
     expose:
       - '80'
     volumes:
-      - ${DATA_DIR}/onix-api:/onix/data/
+      - ${DATA_DIR}/onix-api/session:/onix/data/session
+      - ${DATA_DIR}/onix-api/wip:/onix/data/wip
+      - ${DATA_DIR}/onix-api/lock:/onix/data/lock
+      - ${DATA_DIR}/onix-api/storage:/onix/data/storage
 
   database:
     image: postgres:14.1
