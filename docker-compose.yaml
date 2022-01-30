@@ -19,7 +19,7 @@ services:
     expose:
       - '80'
     volumes:
-      - ${DATA_DIR}/onix-api:/wis/data/
+      - ${DATA_DIR}/onix-api:/onix/data/
 
   database:
     image: postgres:14.1
