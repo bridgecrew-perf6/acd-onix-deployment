@@ -11,6 +11,7 @@ gcloud secrets versions access latest --secret="acd-onix-${STAGE}-secrets" > sec
 
 cat custom.cfg > ${ENV_FILE}
 cat secrets.cfg >> ${ENV_FILE}
+echo "" >> >> ${ENV_FILE}
 echo "DATA_DIR=${HOME}/onix/data" >> ${ENV_FILE} 
 
 sudo docker-compose up -d
